@@ -1,0 +1,76 @@
+
+public class QueueLinked {
+	
+	static class Node 
+	{
+		int data ;
+		Node next;
+		Node prev;
+		
+		public Node(int value)
+		{
+			data=value;
+			next=null;
+			prev=null;
+		}
+	}
+	
+	Node front;
+	Node rear;
+	public QueueLinked()
+	{
+		front=null;
+		rear=null;
+	}
+	
+	public boolean isEmpty()
+	{
+		return front==null;
+	}
+	public void enqueue(int val)
+	{
+		Node newnode=new Node(val);
+		if(front==null)
+		{
+			rear=front=newnode;	
+		}
+		else
+		{
+			rear.next=newnode;
+			newnode.prev=rear;
+			rear=newnode;
+			
+		}
+	}
+	public int dequeue()
+	{
+		int temp=-1;
+		if(front==null)
+		{
+			System.out.println("queue is empty !!");
+		}
+		else if (front==rear)
+		{
+			temp=front.data;
+			front=rear=null;
+		}
+		else
+		{
+			temp=front.data;
+			front=front.next;
+			front.prev=null;
+		}
+		return temp;
+	}
+	public void peek()
+	{
+		if(front==null)
+		{
+			System.out.println("queue is empty !!");
+		}
+		else
+		{
+			System.out.println("Front element is "+front.data);
+		}
+	}
+}

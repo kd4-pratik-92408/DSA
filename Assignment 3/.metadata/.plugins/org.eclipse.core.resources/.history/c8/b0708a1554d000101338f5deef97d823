@@ -1,0 +1,64 @@
+
+public class StackLinked {
+	
+	static class Node
+	{
+		Node next;
+		int data;
+		public Node(int val)
+		{
+			next=null;
+			data=val;
+		}
+	}
+	
+	Node head;
+	
+	
+	public StackLinked()
+	{
+		head=null;
+	}
+	
+	public boolean isEmpty()
+	{
+		return head==null;
+	}
+	
+	public void push(int value)
+	{
+		Node newnode=new Node(value);
+		if(head==null) {
+			head=newnode;
+		}
+		else 
+		{
+			newnode.next=head;
+			head=newnode;
+		}
+	}
+	public void pop()
+	{
+		if(head==null)
+		{
+			System.out.println("Stack is empty !!");
+		}
+		else
+		{
+			head=head.next;
+		}
+	}
+	public void peek()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Stack is empty !!");
+		}
+		else
+		{
+			System.out.println("top data : "+head.data);
+		}
+	}
+	
+
+}
